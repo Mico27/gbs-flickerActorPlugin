@@ -1,0 +1,23 @@
+{
+  "_resourceType": "scene",
+  "id": "66864ca8-2010-4192-8577-acaa5b9398df",
+  "_index": 0,
+  "name": "Horizontal 10 tile limit test",
+  "backgroundId": "1e5f9d6a-bdbc-43e6-8c34-22f5bb5dea05",
+  "tilesetId": "",
+  "width": 20,
+  "height": 18,
+  "type": "TOPDOWN",
+  "colorModeOverride": "none",
+  "paletteIds": [],
+  "spritePaletteIds": [],
+  "collisions": "",
+  "autoFadeSpeed": 1,
+  "symbol": "scene_1",
+  "x": 152,
+  "y": 120,
+  "script": [],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": []
+}
