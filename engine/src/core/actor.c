@@ -54,6 +54,7 @@ UBYTE emote_timer;
 
 UBYTE allocated_sprite_tiles;
 UBYTE allocated_hardware_sprites;
+UBYTE disable_flicker;
 
 void actors_init(void) BANKED {
     actors_active_tail = actors_active_head = actors_inactive_head = NULL;
@@ -61,6 +62,7 @@ void actors_init(void) BANKED {
     player_iframes          = 0;
     player_collision_actor  = NULL;
     emote_actor             = NULL;
+	disable_flicker			= 0;
 
     memset(actors, 0, sizeof(actors));
 }
@@ -183,15 +185,17 @@ void actors_update(void) NONBANKED {
 
         actor = actor->prev;
     }
-	//pop n push for flicker
-	actor = actors_active_tail;
-	if (actor != actors_active_head){
-	    actor->next = actors_active_head;
-	    actors_active_head->prev = actor;
-	    actors_active_head = actor;
-	    actor->prev->next = 0;
-	    actors_active_tail = actor->prev;
-	    actor->prev = 0;
+	if (!disable_flicker){
+		//pop n push for flicker
+		actor = actors_active_tail;
+		if (actor != actors_active_head){
+			actor->next = actors_active_head;
+			actors_active_head->prev = actor;
+			actors_active_head = actor;
+			actor->prev->next = 0;
+			actors_active_tail = actor->prev;
+			actor->prev = 0;
+		}
 	}
     SWITCH_ROM(_save);
 }
